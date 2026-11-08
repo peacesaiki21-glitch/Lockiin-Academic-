@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111111">
+  <title>LOCKIIN Academic | ABSU Marketplace</title>
+  <style>
+    :root {
+      --black: #111111;
+      --white: #ffffff;
+      --pink: #9D174D;
+      --muted: #777;
+      --light: #f7f5f6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--light);
+      color: var(--black);
+    }
+
+    header {
+      background: var(--black);
+      color: var(--white);
+      padding: 18px 20px;
+    }
+
+    .brand { font-size: 23px; font-weight: 800; letter-spacing: 1px; }
+    .brand span { color: #e879a5; }
+    header p { color: #ddd; font-size: 12px; margin-top: 5px; }
+
+    main { padding: 22px 18px 100px; max-width: 760px; margin: auto; }
+
+    .hero {
+      background: var(--black);
+      color: white;
+      padding: 27px 22px;
+      border-radius: 18px;
+      margin-bottom: 25px;
+    }
+
+    .hero small { color: #f2a4c3; font-weight: bold; }
+    .hero h1 { font-size: 29px; line-height: 1.2; margin: 12px 0; }
+    .hero p { color: #ddd; font-size: 14px; line-height: 1.6; }
+
+    .search {
+      display: flex;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .search input {
+      min-width: 0;
+      flex: 1;
+      padding: 14px;
+      border: 0;
+      border-radius: 9px;
+      font-size: 14px;
+    }
+
+    button {
+      background: var(--pink);
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 13px 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    section { margin-top: 27px; }
+    h2 { font-size: 19px; margin-bottom: 14px; }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 11px;
+    }
+
+    .category {
+      background: white;
+      padding: 17px 13px;
+      border-radius: 12px;
+      border: 1px solid #eee;
+      font-weight: bold;
+    }
+
+    .category span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: normal;
+      margin-top: 6px;
+    }
+
+    .empty {
+      background: white;
+      padding: 22px;
+      border-radius: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .assistant {
+      background: #fceaf1;
+      border: 1px solid #f3c6d8;
+      padding: 19px;
+      border-radius: 14px;
+    }
+
+    .assistant p { color: #555; font-size: 13px; line-height: 1.5; margin: 8px 0 14px; }
+
+    nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: space-around;
+      background: white;
+      border-top: 1px solid #eee;
+      padding: 13px 5px;
+      z-index: 5;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    nav a strong { display: block; font-size: 18px; margin-bottom: 4px; }
+
+    @media (min-width: 600px) {
+      main { padding-top: 35px; }
+      .hero h1 { font-size: 38px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="brand">LOCKIIN<span>.</span></div>
+  <p>THE LOCKIIN ECOSYSTEM · ACADEMIC</p>
+</header>
+
+<main>
+  <div class="hero">
+    <small>EXCLUSIVELY FOR ABSU STUDENTS</small>
+    <h1>Your academic resources, all in one place.</h1>
+    <p>Find past questions and study materials for your courses at Abia State University.</p>
+    <div class="search">
+      <input id="searchInput" type="search" placeholder="Search course code or material">
+      <button onclick="searchMaterials()">Search</button>
+    </div>
+  </div>
+
+  <section>
+    <h2>Explore by category</h2>
+    <div class="categories">
+      <div class="category">Past Questions<span>Prepare for examinations</span></div>
+      <div class="category">GST Courses<span>General studies materials</span></div>
+      <div class="category">Faculty Materials<span>Browse your faculty</span></div>
+      <div class="category">Departmental<span>Find course materials</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Marketplace</h2>
+    <div class="empty" id="results">
+      Our academic marketplace is being prepared. Available materials will appear here once uploaded.
+    </div>
+  </section>
+
+  <section>
+    <div class="assistant">
+      <h2>Meet your LOCKIIN assistant</h2>
+      <p>Need help finding a past question? Our academic assistant will help you locate the right materials.</p>
+      <button onclick="alert('The LOCKIIN AI assistant will be connected in a later development stage.')">
+        Explore AI Assistant
+      </button>
+    </div>
+  </section>
+</main>
+
+<nav>
+  <a href="#"><strong>⌂</strong>Home</a>
+  <a href="#results"><strong>▤</strong>Market</a>
+  <a href="#results"><strong>✦</strong>AI Assistant</a>
+  <a href="#"><strong>▣</strong>My Library</a>
+  <a href="#"><strong>●</strong>Account</a>
+</nav>
+
+<script>
+  function searchMaterials() {
+    const query = document.getElementById("searchInput").value.trim();
+    if (!query) {
+      alert("Enter a course code or material to search.");
+      return;
+    }
+    document.getElementById("results").textContent =
+      'No live catalogue is connected yet. Your search for "' + query +
+      '" will work when we connect the marketplace database.';
+    document.getElementById("results").scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
